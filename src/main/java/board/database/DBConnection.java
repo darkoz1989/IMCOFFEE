@@ -1,0 +1,26 @@
+package board.database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+
+	public static Connection getConnection() {
+		
+		Connection conn = null;
+		
+		String url = "jdbc:mysql://localhost:3306/IMCOFFEE";
+		String user = "root";
+		String password = "1234";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("데이터베이스에 연결되었습니다.");
+		} catch (Exception e) {
+			System.out.println("데이터베이스에 연결이 되지 않았습니다.");
+			e.printStackTrace();
+		}
+		return conn;
+	}
+}
